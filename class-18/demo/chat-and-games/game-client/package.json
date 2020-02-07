@@ -1,0 +1,20 @@
+{
+  "name": "game-clients",
+  "version": "1.0.0",
+  "description": "",
+  "main": "now.js",
+  "scripts": {
+    "start": "node now.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "faker": "^4.1.0",
+    "prompt": "^1.0.0",
+    "prompt-sync": "^4.1.6",
+    "readline-sync": "^1.4.9",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  }
+}
