@@ -8,81 +8,70 @@ Refer to *Getting Started*  in the [lab submission instructions](../../../refere
 
 ### Getting Started
 
-In the `starter_code` folder, there is a partial implementation of a "validator" module
+Create a new repository for your work in this module called `notes`
 
-In the `root` of that folder, you'll find a file called `index.js` that wires in the validator module and attempts to run functions imported from it.
-
-In the `__tests__` folder, you'll find a file called `validator.test.js` that wires in the validator module, sets up some testing (optimistically) but contains no test code
+For this lab, work in a branch called `base`
 
 ## Requirements
 
+Create a command line application using Node.js called `notes` which will allow the user to specify a note (words) to be added to a database.
+
+The user should be able to type the `notes` command with a flag and a parameter, like this:
+
+```bash
+notes -a "This is a really cool thing that I wanted to remember for later"
+```
+
+- The `-a` (or `--add`) will tell your application that the user wants to ADD a new note
+- All of the text following the `-a` (in the quotes) is the text of the note itself
+- If the user doesn't provide a valid flag (`-a`), show them an error
+- If the user specifies the flag, but doesn't provide any text, show them an error
+
 ### Developer Implementation
 
-> **USE TDD Practices**
+> **USE TDD Practices** as you write your modules
 
-Write an object validation module that exports a "validate" method which can, based on the inputs, validate whether or not the data contained within an object meets a set of rules.
+Use the following files/structure
 
-Things we want to be able to validate
+- `index.js` - Your application's "entry point"
+  - Requires the library files you will be writing (input, notes)
+  - Instantiates an "Input" parser
+  - Sends properly parsed input to the Notes library for display
 
-- Is the object we're trying to validate actually an object?
-- All all "required" properties present and do they have values?
-- For any property that specifies a type, does the value match that type?
+- `lib/input.js`
+  - Exports a constructor function
+  - Uses `minimist` (or any other CLI library) to read command line arguments
+  - Evaluates and Validates the input (is the command (i.e. '-a') a valid one and is there data)
+  - Returns an instance containing the action to perform and the payload for the action
+    - for example:
 
-#### Examples
+      ```javascript
+        {
+          action: "add";
+          payload: "This is a really cool thing that I wanted to remember for later"
+        }
+      ```
 
-Consider this set of rules, which describe what a valid person object should look like
-
-```javascript
-const personRules = {
-  fields: {
-    id: {type: 'string', required: true},
-    name: {type: 'string', required: true},
-    age: {type: 'number', required: true},
-    children: { type: 'array', valueType: 'string' },
-  },
-};
-```
-
-Given those rules, this person should be validated as `true`
-
-```javascript
-const susan = {
-  id:'123-45-6789',
-  name:'Susan McDeveloperson',
-  age: 37,
-  children:[],
-};
-```
-
-This one, as `false`
-
-```javascript
-const fred = {
-  id:38,
-  name:'Freddy McCoder',
-  children:[],
-};
-```
+- `lib/notes.js`
+  - Exports a constructor function
+  - Compose a prototype method that can execute the correct (any) operation, given the above object
+    - How will you use that object to run the correct method?
+      - You can predict that `add` won't be the only action we're going to have to handle...
+  - Write a prototype method called `add()` that will create an object representing a note (with an ID and the note text as properties) and console.log the text of the note to be added when the `add` command is executed
 
 #### Testing
 
-Write a set of tests for your *Validation Module*
+Write a set of tests for your Input Module
 
-- Test each method for proper/improper use (required params)
-- Validate that validation is reliable
-- Validate proper error conditions/returns
+- Does it properly parse the `-x` style options?
+- Do the instance methods do their correct job (return the right thing) given various inputs?
 
-> **Software Engineering Note!**
-> Externalizing type checking and argument validation is a good exercise in refactoring code
+Write a test for the `add()` method of the Notes module
 
----
-
-### End User Implementation
-
-- Using your well tested library, write a small app that uses your validation scheme
-  - Use the `index.js` file provided to validate objects (such as the above examples) using the exported functions from your library
-- `console.log()` the return values
+- Since it's only doing a `console.log()`, assert that you can view that log with a spy.
 
 ### Assignment Submission Instructions
 
 Refer to the the [Submitting Standard Node.js Lab Submission Instructions](../../../reference/submission-instructions/labs/node-apps.md) for the complete lab submission process and expectations
+
+> This application must be deployed to npm as an installable package.  Please include a link to your npm page for this application with your submission

@@ -23,7 +23,3 @@ Explore more advanced Javascript development patterns using ES6 Classes, Inherit
 ## Today's Outline
 
 <!-- To Be Completed By Instructor -->
-
-- Topic 1
-- Topic 2
-- ...

@@ -1,6 +1,6 @@
-# Data Modeling
+# Advanced Mongo/Mongoose
 
-Data Modeling: The process of taking a real world or conceptual idea and encoding it into Javascript's built in data types. Models typically describe the physical characteristics (properties) and behaviors (methods) of an object in a way that you can write code that uses your models to problem solve and create applications.
+Deeper explorations of Data Modeling, specifically the lifecycle of data management with Mongoose Models, and testing.
 
 ## Learning Objectives
 
@@ -8,21 +8,18 @@ Data Modeling: The process of taking a real world or conceptual idea and encodin
 
 #### Describe and Define
 
-- The role of data models
-- CRUD Operations
-- The "Repository" design pattern
-- Interfaces and Services
+- Testing strategies for databases
+- Mocks
+- CRUD Functionality through Mongoose Methods
+- Interfaces and Collections
 
 #### Execute
 
-- Model real world data
-- Create models with constraints, type checking, validity
-- Create an extensible interface and an implementation for a data model
+- Proficiency with the `mongo` CLI and basic commands
+- Creation of a Mongoose Schema
+- Creation of a Data Model Interface (CRUD operations) for Mongo Schemas
+- Testing code that relies on a Mongo Database server
 
 ## Today's Outline
 
 <!-- To Be Completed By Instructor -->
-
-- Topic 1
-- Topic 2
-- ...

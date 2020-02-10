@@ -6,36 +6,93 @@ In this lab, you will be doing your first "refactoring", which the process of mi
 
 Refer to *Getting Started*  in the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) for complete setup, configuration, deployment, and submission instructions.
 
-## Requirements
+### Getting Started
 
-### Part 1: Classes (Vehicles)
+> Work in a new branch of your `notes` repository called 'classes'
 
-**Starter Code:** `starter-code/classes`
+## Notes Application Requirements
 
-- Implement both `Car` and `Motorcycle` using a Javascript `Class` (in the `vehicle-class.js` file)
-- The tests are pre-configured to run only the constructor variety, but will need to be altered to also test your `Classes`
-  - Try and find a way to keep this DRY
+Your functional requirements are the same as for the previous lab:
+
+Create a command line application using Node.js called `notes` which will allow the user to specify a note (words) to be added to a database.
+
+The user should be able to type the `notes` command with an add flag and a string of text, like this:
+
+```bash
+notes -a "This is a really cool thing that I wanted to remember for later"
+```
+
+- The `-a` (or `--add`) will tell your application that the user wants to ADD a new note
+- All of the text following the `-a` (in the quotes) is the text of the note itself
+- If the user doesn't provide a valid flag (`-a`), show them an error
+- If the user specifies the flag, but doesn't provide any text, show them an error
+
+### Implementation Details
+
+- Refactor your previous work by re-implementing both the `Input` and `Notes` library modules as ES6 Classes
+- Your previous tests should remain functioning after the refactor
+- Create a schema/rules set for both the Command object created by the Input class and the Note created by the Notes class
 
  **Software Engineering Note!** *This is the heart of a refactor -- re-implement the same functionality, the same signature, and the same I/O while completely rewriting the underlying implementation*
 
-### Part 2: Validator
+#### Add validation to the Input and Notes Classes
 
-**Starter Code:** `starter-code/validator`
+- Add a new method to the Input class called `valid()` which should inspect the command object and return a boolean if it is properly formatted according to your rules
+- Add a new method to the Notes class called `valid()` which should inspect the note object and return a boolean if it is properly formatted according to your rules
+- Implement these methods using a new `Validator` class (see requirements below)
 
-This is a repeat of Lab 01, but using a class instead of module methods. This is essentially going to be a refactor. You will have a codebase from which to start, with the goal being to keep the functionality the same, while improving the implementation.
+##### Compose a validation class library
 
-**Write an object validation module that exports a "validate" class that can, based on the inputs, validate whether or not an entity is satisfactory.**
+> `lib/validator.js`
 
-Things we want to be able to validate
+**Write an object validation module that exports a "Validate" class that can, based on the inputs, validate whether or not an entity is satisfactory.**
 
-- Is the entity itself the right type (array, object, function etc)
-- All all "required" properties present and do they have values?
-- For any property that specifies a type, does the value match that type?
-  - i.e. an array of only numbers
+Implementation
 
-Question: Do you want to export the class and have to make a new instance after you import it, or do you want to export an instance of that class (we call this a singleton). What are the pros and cons to each choice?
+- Exports a Class
+  - The constructor should accept a single parameter
+    - An object that is a set of "rules" for validation (called a "schema")
+  - The class should expose a method called `validate()` that accepts a single parameter
+    - An object to validate
+  - When called, the validate() method should return a boolean indicating whether the object is valid based on the schema
+- Things we want to be able to validate
+  - Is the object we're trying to validate actually an object?
+  - All all "required" properties present and do they have values?
+  - For any property that specifies a type, does the value match that type?
+- **Examples**
+  - Consider this set of rules, which describe what a valid person object should look like
 
-#### Testing the Validation Module
+      ```javascript
+      const personRules = {
+        id: {type: 'string', required: true},
+        name: {type: 'string', required: true},
+        age: {type: 'number', required: true},
+        children: { type: 'array', valueType: 'string' },
+      };
+      ```
+
+  - Given those rules, this person should be validated as `true`
+
+      ```javascript
+      const susan = {
+        id:'123-45-6789',
+        name:'Susan McDeveloperson',
+        age: 37,
+        children:[],
+      };
+      ```
+
+    - This one, as `false`
+
+      ```javascript
+      const fred = {
+        id:38,
+        name:'Freddy McCoder',
+        children:[],
+      };
+      ```
+
+##### Testing the Validation Module
 
 - Test each method for proper/improper use (required params)
 - Validate that validation is reliable
@@ -44,3 +101,5 @@ Question: Do you want to export the class and have to make a new instance after 
 ## Assignment Submission Instructions
 
 Refer to the the [Submitting Standard Node.js Lab Submission Instructions](../../../reference/submission-instructions/labs/node-apps.md) for the complete lab submission process and expectations
+
+> This application must be deployed to npm as an installable package.  Please include a link to your npm page for this application with your submission

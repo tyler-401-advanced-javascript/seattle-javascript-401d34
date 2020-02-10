@@ -22,7 +22,3 @@ Application development in the Node.js ecosystem, including the writing of modul
 ## Today's Outline
 
 <!-- To Be Completed By Instructor -->
-
-- Topic 1
-- Topic 2
-- ...
