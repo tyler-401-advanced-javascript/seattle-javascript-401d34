@@ -1,6 +1,8 @@
 const Notes = require('../lib/notes.js');
 const notes = new Notes();
 
+require('@code-fellows/supergoose');
+
 jest.spyOn(notes, 'add');
 
 describe('Note Module', () => {
