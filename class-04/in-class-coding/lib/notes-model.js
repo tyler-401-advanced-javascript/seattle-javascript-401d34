@@ -1,15 +1,15 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const notes = mongoose.Schema({
   category: {
     type: String,
     required: false,
-    default: 'uncategorized',
+    default: 'uncategorized'
   },
   text: {
     type: String,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 
-module.exports = mongoose.model('notes', notes);
+module.exports = mongoose.model('notes', notes)

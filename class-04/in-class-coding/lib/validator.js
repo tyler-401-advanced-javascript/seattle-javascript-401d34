@@ -1,76 +1,72 @@
 class Validator {
-
-  constructor(schema) {
-    this.schema = schema;
+  constructor (schema) {
+    this.schema = schema
   }
 
-  isValid(data) {
+  isValid (data) {
+    let valid = true
 
-    let valid = true;
-
-    for (let fieldName in this.schema) {
-
-      let field = this.schema[fieldName];
+    for (const fieldName in this.schema) {
+      const field = this.schema[fieldName]
 
       // Am I required and set?
-      let required = field.required
+      const required = field.required
         ? this.isTruthy(data[fieldName])
-        : true;
+        : true
 
       // Am I the right type (if we even care)
-      let type = field.type
+      const type = field.type
         ? this.isCorrectType(data[fieldName], field)
-        : true;
+        : true
 
       // If anything is false ...
       if (!(required && type)) {
-        valid = false;
+        valid = false
       }
-
     }
 
-    return valid;
+    return valid
   }
 
-  isCorrectType(input, field) {
+  isCorrectType (input, field) {
     switch (field.type) {
-    case 'string': return this.isString(input);
-    case 'number': return this.isNumber(input);
-    case 'array': return this.isArray(input, field.valueType);
-    case 'object': return this.isObject(input);
-    case 'boolean': return this.isBoolean(input);
-    default: return false;
+      case 'string': return this.isString(input)
+      case 'number': return this.isNumber(input)
+      case 'array': return this.isArray(input, field.valueType)
+      case 'object': return this.isObject(input)
+      case 'boolean': return this.isBoolean(input)
+      default: return false
     }
   }
 
-  isString(input) {
-    return typeof input === 'string';
+  isString (input) {
+    return typeof input === 'string'
   }
 
-  isObject(input) {
-    return typeof input === 'object' && !(input instanceof Array);
+  isObject (input) {
+    return typeof input === 'object' && !(input instanceof Array)
   }
 
-  isArray(input, valueType) {
-    return Array.isArray(input) && (valueType ? input.every(val => typeof val === valueType) : true);
+  /* eslint valid-typeof: "error" */
+  isArray (input, valueType) {
+    return Array.isArray(input) && (valueType ? input.every(val => typeof val === valueType) : true)
   }
 
-  isBoolean(input) {
-    return typeof input === 'boolean';
+  isBoolean (input) {
+    return typeof input === 'boolean'
   }
 
-  isNumber(input) {
-    return typeof input === 'number';
+  isNumber (input) {
+    return typeof input === 'number'
   }
 
-  isFunction(input) {
-    return typeof input === 'function';
+  isFunction (input) {
+    return typeof input === 'function'
   }
 
-  isTruthy(input) {
-    return !!input;
+  isTruthy (input) {
+    return !!input
   }
-
 }
 
-module.exports = Validator;
+module.exports = Validator

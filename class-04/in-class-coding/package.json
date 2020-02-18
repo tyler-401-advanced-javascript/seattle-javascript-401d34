@@ -1,17 +1,23 @@
 {
-  "name": "notesy",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@emilyaviva/notesy",
+  "version": "0.1.0",
+  "description": "A simple command-line note-taking app",
   "bin": {
-    "notes": "index.js"
+    "notesy": "cli.js"
   },
-  "main": "index.js",
+  "main": "cli.js",
   "scripts": {
+    "lint": "standard --env jest --verbose | snazzy",
+    "format": "standard --env jest --fix",
     "test": "jest",
-    "watch": "jest --watchAll"
+    "test-watch": "jest --watchAll"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["cli", "notes"],
+  "author": {
+    "name": "Emily Aviva Kapor-Mater",
+    "email": "emily@emilyaviva.com",
+    "url": "https://emilyaviva.com"
+  },
   "license": "ISC",
   "dependencies": {
     "is-url": "^1.2.4",
@@ -21,6 +27,11 @@
   },
   "devDependencies": {
     "faker": "^4.1.0",
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "snazzy": "^8.0.0",
+    "standard": "^14.3.1"
+  },
+  "standard": {
+    "env": "jest"
   }
 }
