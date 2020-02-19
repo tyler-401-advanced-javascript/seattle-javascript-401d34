@@ -18,6 +18,11 @@
     "email": "emily@emilyaviva.com",
     "url": "https://emilyaviva.com"
   },
+  "repository": "github:emilyaviva/notesy",
+  "bugs": {
+    "url": "https://github.com/emilyaviva/notesy/issues"
+  },
+  "homepage": "https://github.com/emilyaviva/notesy",
   "license": "ISC",
   "dependencies": {
     "is-url": "^1.2.4",
