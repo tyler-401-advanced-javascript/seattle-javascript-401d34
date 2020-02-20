@@ -1,0 +1,54 @@
+{
+  "entries": [
+    {
+      "title": "My First Post",
+      "text": "Lorem ipsum dolor sit amet",
+      "assets": [],
+      "authorId": 1,
+      "id": 1
+    },
+    {
+      "title": "My Second Post",
+      "text": "Mr. and Mrs. Dursley, of number four Privet Drive, oppressed their nephew Harry many years",
+      "assets": [],
+      "authorId": 1,
+      "id": 2
+    },
+    {
+      "title": "My Third Post",
+      "text": "A long, long time ago, in a galaxy far away",
+      "assets": [],
+      "authorId": 1,
+      "id": 3
+    },
+    {
+      "title": "My First Post",
+      "text": "Lorem ipsum dolor sit amet",
+      "assets": [],
+      "authorId": 2,
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "entryId": 1,
+      "text": "here be trolls"
+    },
+    {
+      "id": 2,
+      "entryId": 4,
+      "text": "snape kills dumbledore"
+    }
+  ],
+  "authors": [
+    {
+      "name": "John Smith",
+      "id": 1
+    },
+    {
+      "name": "Jill Owlwrangler",
+      "id": 2
+    }
+  ]
+}

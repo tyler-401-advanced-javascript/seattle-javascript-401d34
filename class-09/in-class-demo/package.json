@@ -1,0 +1,32 @@
+{
+  "name": "meme-engine-api",
+  "version": "0.1.0",
+  "description": "yolo swag 420",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "test-watch": "jest --watchAll --coverage",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Emily Kapor-Mater <emily@codefellows.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@code-fellows/supergoose": "^1.0.1",
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2"
+  },
+  "standard": {
+    "env": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.1",
+    "morgan": "^1.9.1"
+  }
+}
