@@ -1,0 +1,23 @@
+{
+  "name": "in-class-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "stack.js",
+  "dependencies": {
+    "jest": "^25.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest --coverage",
+    "test-watch": "jest --watchAll --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "standard": {
+    "env": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
