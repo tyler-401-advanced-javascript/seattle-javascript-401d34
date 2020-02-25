@@ -27,4 +27,14 @@ describe('our server', () => {
         expect(results.body.name).toEqual('test author')
       })
   })
+
+  it('deletes an existing item on a DELETE request to /authors/:id', () => {
+    return mockRequest.post('/authors').send({ id: '1', name: 'test' }).then(() => {
+      return mockRequest
+        .delete('/authors/1')
+        .then(results => {
+          expect(results.status).toBe(202)
+        })
+    })
+  })
 })

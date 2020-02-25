@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "jest --coverage",
     "test-watch": "jest --watchAll --coverage"
   },
@@ -18,5 +19,8 @@
   },
   "standard": {
     "env": "jest"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
