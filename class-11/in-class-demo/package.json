@@ -2,25 +2,22 @@
   "name": "in-class-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "stack.js",
+  "dependencies": {
+    "jest": "^25.1.0"
+  },
+  "devDependencies": {},
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
     "test": "jest --coverage",
     "test-watch": "jest --watchAll --coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "jest": "^25.1.0",
-    "supertest": "^4.0.2"
-  },
   "standard": {
     "env": "jest"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.2"
+  "jest": {
+    "testEnvironment": "node"
   }
 }
