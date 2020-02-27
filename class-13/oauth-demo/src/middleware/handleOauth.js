@@ -29,7 +29,16 @@ async function getRemoteUsername (token) {
 }
 
 async function getUser (username) {
-  const user = await User.findOneAndUpdate({ username }, { upsert: true })
+  // do we already have the user created?
+  const potentialUser = await User.findOne({ username })
+  let user
+  if (!potentialUser) {
+    // create the user
+    const newUser = new User({ username })
+    user = await newUser.save()
+  } else {
+    user = potentialUser
+  }
   const token = user.generateToken()
   return [user, token]
 }
