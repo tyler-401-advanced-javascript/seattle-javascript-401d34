@@ -5,9 +5,9 @@ const app = express()
 app.use(express.json())
 
 const AWS = require('aws-sdk')
-AWS.config.update({ region: 'us-west-2' })
+const { AWS_REGION, SQS_QUEUE_URL } = process.env
+AWS.config.update({ region: AWS_REGION })
 const sqs = new AWS.SQS({ apiVersion: '2012-11-05' })
-const { SQS_QUEUE_URL } = process.env
 
 // orders look like:
 // {

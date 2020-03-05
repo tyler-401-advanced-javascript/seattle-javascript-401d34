@@ -1,6 +1,6 @@
 // Our email service will listen to the queue and when it gets
 // a new message on the queue, it will send an email
-
+require('dotenv').config()
 const AWS = require('aws-sdk')
 const { Consumer } = require('sqs-consumer')
 const mailgun = require('mailgun-js')
@@ -11,7 +11,7 @@ const mg = mailgun({
   domain: MAILGUN_DOMAIN
 })
 
-AWS.config.update({ region: 'us-west-2' })
+AWS.config.update({ region: process.env.AWS_REGION })
 
 const app = Consumer.create({
   queueUrl: SQS_QUEUE_URL,
