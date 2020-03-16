@@ -2,25 +2,31 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      count: 0
+    };
+  }
+
+  render () {
+    return (
+      <div className="App center">
+        <h1>My Awesome Website!</h1>
+        <h2>You won't believe how awesome it is</h2>
+        <div class="count">
+          Current count: <span id="number">{this.state.count}</span>
+        <button id="increment" onClick={() => this.setState({
+            count: this.state.count + 1
+          })}>Increment</button>
+        <button id="decrement" onClick={() => this.setState({
+            count: this.state.count - 1
+          })}>Decrement</button>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
