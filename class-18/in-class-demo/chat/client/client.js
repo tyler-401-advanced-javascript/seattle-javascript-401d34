@@ -1,5 +1,5 @@
 $(function () {
-  const socket = io('http://localhost:3000')
+  const socket = io('http://172.16.10.218:3000')
   $('#input').submit(function (e) {
     e.preventDefault()
     socket.emit('chat-message', $('#message').val())

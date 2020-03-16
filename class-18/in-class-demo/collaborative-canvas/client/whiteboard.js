@@ -1,4 +1,4 @@
-const socket = io('http://localhost:3000')
+const socket = io('http://172.16.10.218:3000')
 
 const canvas = document.getElementById('whiteboard')
 const context = canvas.getContext('2d')
