@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> renders correctly 1`] = `
+<div
+  className="App"
+>
+  <h1>
+    My App
+  </h1>
+  <section
+    className="Thing"
+  >
+    <p>
+      My wonderful component
+    </p>
+    <span>
+      Stuff: 
+      true
+    </span>
+    <button
+      id="myButton"
+      onClick={[Function]}
+    >
+      Clicky
+    </button>
+  </section>
+</div>
+`;
