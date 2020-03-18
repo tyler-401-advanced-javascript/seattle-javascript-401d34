@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My Awesome Website!</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .center {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .count {
+        font-size: 24px;
+      }
+
+      #number {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <h1>My Awesome Website!</h1>
+      <h2>You won't believe how awesome it is</h2>
+    </div>
+    <div class="center">
+      <div class="count">
+        Current count: <span id="number">0</span>
+        <button id="increment">Increment</button>
+        <button id="decrement">Decrement</button>
+      </div>
+    </div>
+    <script>
+      const increment = document.getElementById("increment");
+      const decrement = document.getElementById("decrement");
+      const numberField = document.getElementById("number")
+      let number = Number(numberField.innerHTML);
+      function changeNumber (typeOfChange) {
+        if (typeOfChange === 'increment') return function(e) {
+          number++; numberField.innerHTML = number;
+        }
+        if (typeOfChange === 'decrement') return function(e) {
+          number--; numberField.innerHTML = number;
+        }
+      }
+      increment.addEventListener("click", changeNumber('increment'));
+      decrement.addEventListener("click", changeNumber('decrement'));
+    </script>
+  </body>
+</html>
